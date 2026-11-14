@@ -1,0 +1,34 @@
+name: Run evaluation + publish report
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1" # weekly rerun — model drift watch
+
+concurrency:
+  group: judge-lab
+  cancel-in-progress: true
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run the judge over the eval set
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          JUDGE_MODEL: ${{ vars.JUDGE_MODEL }}
+        run: python3 src/run.py
+      - name: Calibrate + build report
+        run: python3 src/calibrate.py
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "3.90.0"
+          command: pages deploy report --project-name=judge-lab --branch main --commit-dirty=true

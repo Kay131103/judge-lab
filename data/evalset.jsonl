@@ -1,0 +1,52 @@
+{
+  "id": "ex001",
+  "claim": "The agent posts inline review comments on pull requests and sets a commit status that branch protection can require.",
+  "label": "supported"
+}
+{"id": "ex002", "claim": "The agent supports GitLab merge requests natively through the same webhook endpoint.", "label": "unsupported"}
+{"id": "ex003", "claim": "Rule-based checks include detection of committed secrets such as private keys, AWS tokens, GitHub tokens, Anthropic tokens, Slack tokens, and hard-coded passwords.", "label": "supported"}
+{"id": "ex004", "claim": "The rule-based checks also flag Python syntax errors before review.", "label": "unsupported"}
+{"id": "ex005", "claim": "The AI review pass is optional and runs through an Anthropic-compatible Messages API.", "label": "supported"}
+{"id": "ex006", "claim": "The default LLM review target is the OpenCode Zen gateway running qwen3.7-max.", "label": "supported"}
+{"id": "ex007", "claim": "If the AI pass fails due to a rate limit or outage, the agent blocks the review until the LLM becomes available again.", "label": "unsupported"}
+{"id": "ex008", "claim": "If the AI pass fails, the rule-based results are still posted and the review summary says the AI pass did not run.", "label": "supported"}
+{"id": "ex009", "claim": "The agent can run in webhook mode by exposing a POST /webhook endpoint.", "label": "supported"}
+{"id": "ex010", "claim": "In polling mode the agent fetches PRs from a feed of RSS URLs configured via PR_REVIEW_FEED_URL.", "label": "unsupported"}
+{"id": "ex011", "claim": "Polling mode is enabled by setting PR_REVIEW_WATCH_REPOS to a comma-separated list of repositories.", "label": "supported"}
+{"id": "ex012", "claim": "Polling and webhook modes cannot run at the same time.", "label": "unsupported"}
+{"id": "ex013", "claim": "A one-off review can be run locally with the command review owner/repo#123 and supports a --dry-run flag.", "label": "supported"}
+{"id": "ex014", "claim": "Each pull request is reviewed on every push, even if the head commit was already reviewed before.", "label": "unsupported"}
+{"id": "ex015", "claim": "Each head commit is reviewed only once, and that record is kept in SQLite so a restart does not post the same review again.", "label": "supported"}
+{"id": "ex016", "claim": "A collaborator can comment /recheck on a pull request to force a re-review.", "label": "unsupported"}
+{"id": "ex017", "claim": "A collaborator can comment /review on a pull request to force a re-review.", "label": "supported"}
+{"id": "ex018", "claim": "The agent reviews a pull request when it is opened, reopened, marked ready for review, or receives new commits.", "label": "supported"}
+{"id": "ex019", "claim": "The agent re-reviews pull requests automatically every hour regardless of new commits.", "label": "unsupported"}
+{"id": "ex020", "claim": "The rule-based checks look for merge conflict markers and leftover debugger statements.", "label": "supported"}
+{"id": "ex021", "claim": "The rule-based checks include console.log detection.", "label": "supported"}
+{"id": "ex022", "claim": "The rule-based checks run a unit test suite before reviewing.", "label": "unsupported"}
+{"id": "ex023", "claim": "The rule-based checks flag new TODO comments and very large files.", "label": "supported"}
+{"id": "ex024", "claim": "The agent supports Bitbucket Server as a first-class provider with dedicated configuration.", "label": "unsupported"}
+{"id": "ex025", "claim": "GitHub authentication can be provided either as a token or as GitHub App credentials.", "label": "supported"}
+{"id": "ex026", "claim": "The agent requires a GitHub App installation; a personal access token alone is not enough.", "label": "unsupported"}
+{"id": "ex027", "claim": "The LLM pass asks the model to anchor each finding to a line in the diff.", "label": "supported"}
+{"id": "ex028", "claim": "If the LLM picks a line GitHub cannot comment on, the finding is discarded entirely.", "label": "unsupported"}
+{"id": "ex029", "claim": "If the LLM picks a line GitHub cannot comment on, the finding goes into the review summary instead.", "label": "supported"}
+{"id": "ex030", "claim": "The agent automatically merges pull requests that pass all checks.", "label": "unsupported"}
+{"id": "ex031", "claim": "PR_REVIEW_MAX_INLINE_COMMENTS limits how many inline comments a single review can post.", "label": "supported"}
+{"id": "ex032", "claim": "PR_REVIEW_REQUEST_CHANGES_ON_FAIL makes the agent request changes when checks fail.", "label": "supported"}
+{"id": "ex033", "claim": "PR_REVIEW_DISABLED_RULES accepts rule names such as todo-comment to skip specific checks.", "label": "supported"}
+{"id": "ex034", "claim": "PR_REVIEW_IGNORE_PATHS accepts glob patterns such as *.lock to skip files.", "label": "supported"}
+{"id": "ex035", "claim": "The agent stores review state in PostgreSQL by default.", "label": "unsupported"}
+{"id": "ex036", "claim": "PR_REVIEW_DB_PATH configures where the agent's SQLite database lives.", "label": "supported"}
+{"id": "ex037", "claim": "The LLM review requires an OpenAI-only API key and cannot use Anthropic-compatible endpoints.", "label": "unsupported"}
+{"id": "ex038", "claim": "PR_REVIEW_LLM_BASE_URL can point the LLM review at Anthropic instead of the default gateway.", "label": "supported"}
+{"id": "ex039", "claim": "The agent was written in Go and distributed as a static binary.", "label": "unsupported"}
+{"id": "ex040", "claim": "PR_REVIEW_WORKERS controls the number of concurrent review workers.", "label": "supported"}
+{"id": "ex041", "claim": "The deterministic checks catch committed private keys as one of the secret categories.", "label": "supported"}
+{"id": "ex042", "claim": "The agent posts a commit status that can be marked as required by branch protection.", "label": "supported"}
+{"id": "ex043", "claim": "PR_REVIEW_POLL_INTERVAL_SECONDS controls how often polling mode checks for new pull requests.", "label": "supported"}
+{"id": "ex044", "claim": "The agent sends a notification to Slack when a review completes.", "label": "unsupported"}
+{"id": "ex045", "claim": "Webhook mode is described as the recommended approach when you can expose an HTTPS endpoint.", "label": "supported"}
+{"id": "ex046", "claim": "The agent reviews only the pull request title and description, not the diff.", "label": "unsupported"}
+{"id": "ex047", "claim": "The rule-based checks look for committed Slack tokens.", "label": "supported"}
+{"id": "ex048", "claim": "PR_REVIEW_FAIL_ON defaults to warning, failing reviews on any nit-level finding.", "label": "unsupported"}
