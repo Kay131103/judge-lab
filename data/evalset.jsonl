@@ -1,8 +1,4 @@
-{
-  "id": "ex001",
-  "claim": "The agent posts inline review comments on pull requests and sets a commit status that branch protection can require.",
-  "label": "supported"
-}
+{"id": "ex001", "claim": "The agent posts inline review comments on pull requests and sets a commit status that branch protection can require.", "label": "supported"}
 {"id": "ex002", "claim": "The agent supports GitLab merge requests natively through the same webhook endpoint.", "label": "unsupported"}
 {"id": "ex003", "claim": "Rule-based checks include detection of committed secrets such as private keys, AWS tokens, GitHub tokens, Anthropic tokens, Slack tokens, and hard-coded passwords.", "label": "supported"}
 {"id": "ex004", "claim": "The rule-based checks also flag Python syntax errors before review.", "label": "unsupported"}
