@@ -145,9 +145,6 @@ def lies_table(m):
 
 
 def build_html(m):
-    verdicts = {
-        "ex001": 1,
-    }
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     grade = "well-calibrated" if m["ece"] < 0.08 else ("mildly overconfident" if m["ece"] < 0.2 else "overconfident")
     return f"""<!doctype html>
