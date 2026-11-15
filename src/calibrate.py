@@ -236,6 +236,7 @@ def main():
         return
     m = metrics(gold, results)
     out = ROOT / "report" / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(build_html(m))
     print(f"report → {out}")
     print(f"accuracy {m['accuracy']*100:.1f}% · kappa {m['kappa']:.2f} · ECE {m['ece']*100:.1f}% · misses {len(m['misses'])}")
